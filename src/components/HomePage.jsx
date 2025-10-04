@@ -97,8 +97,7 @@ const HomePage = ({ genres, setActiveTab, onShowAuth, onShowDemo }) => {
               <SpeakerWaveIcon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
             </div>
             <div>
-              <h1 className="text-lg sm:text-xl font-bold text-gray-900">TrueFans</h1>
-              <p className="text-xs text-gray-600 hidden sm:block">Music Intelligence</p>
+              <h1 className="text-lg sm:text-xl font-bold text-gray-900">TrueFans NEWSLETTERS™</h1>
             </div>
           </div>
           <div className="flex items-center space-x-2 sm:space-x-4">
@@ -341,7 +340,7 @@ const HomePage = ({ genres, setActiveTab, onShowAuth, onShowDemo }) => {
                   <SpeakerWaveIcon className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold">TrueFans</h3>
+                  <h3 className="text-lg font-bold">TrueFans NEWSLETTERS™</h3>
                   <p className="text-xs text-gray-400">Music Intelligence</p>
                 </div>
               </div>
@@ -379,7 +378,7 @@ const HomePage = ({ genres, setActiveTab, onShowAuth, onShowDemo }) => {
           </div>
 
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-            <p>&copy; 2025 TrueFans. All rights reserved.</p>
+            <p>&copy; 2025 TrueFans NEWSLETTERS™. All rights reserved.</p>
           </div>
         </div>
       </footer>

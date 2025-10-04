@@ -108,7 +108,7 @@ const AuthModal = ({ isOpen, onClose, defaultMode = 'signin' }) => {
           <p className="text-sm sm:text-base text-gray-600">
             {mode === 'signin'
               ? 'Sign in to access your dashboard'
-              : 'Sign up to get started with TrueFans'}
+              : 'Sign up to get started with TrueFans NEWSLETTERS™'}
           </p>
         </div>
 

@@ -111,7 +111,7 @@ export const useGenreData = () => {
     {
       id: 'crossroads',
       name: 'CROSSROADS',
-      label: 'Country/Americana',
+      label: 'Country',
       day: 'Sunday',
       time: '8 AM',
       color: 'bg-yellow-700',
@@ -120,7 +120,22 @@ export const useGenreData = () => {
       growth: 14.8,
       revenue: 25200,
       emoji: '🤠',
-      description: 'Modern country trends, Americana roots, and Nashville intelligence',
+      description: 'Modern country trends, Nashville intelligence, and traditional country roots',
+      demoAvailable: false
+    },
+    {
+      id: 'roots',
+      name: 'ROOTS',
+      label: 'Americana',
+      day: 'Sunday',
+      time: '2 PM',
+      color: 'bg-orange-800',
+      subscribers: 9850,
+      engagement: 48.2,
+      growth: 16.5,
+      revenue: 19700,
+      emoji: '🎻',
+      description: 'Americana roots, folk traditions, bluegrass revival, and authentic storytelling',
       demoAvailable: false
     },
     {
@@ -154,6 +169,36 @@ export const useGenreData = () => {
       demoAvailable: false
     },
     {
+      id: 'lyricist',
+      name: 'LYRICIST',
+      label: 'Lyric Writing',
+      day: 'Tuesday',
+      time: '9 AM',
+      color: 'bg-purple-700',
+      subscribers: 7820,
+      engagement: 55.3,
+      growth: 20.1,
+      revenue: 18400,
+      emoji: '📝',
+      description: 'Lyrical techniques, metaphor mastery, wordplay, and poetic songwriting',
+      demoAvailable: false
+    },
+    {
+      id: 'narrative',
+      name: 'NARRATIVE',
+      label: 'Storytelling',
+      day: 'Saturday',
+      time: '9 AM',
+      color: 'bg-indigo-700',
+      subscribers: 8450,
+      engagement: 60.7,
+      growth: 18.9,
+      revenue: 20100,
+      emoji: '📖',
+      description: 'Song storytelling techniques, narrative structures, and character development in music',
+      demoAvailable: false
+    },
+    {
       id: 'executive',
       name: 'EXECUTIVE',
       label: 'Music Business Strategy',
@@ -181,6 +226,36 @@ export const useGenreData = () => {
       revenue: 34200,
       emoji: '💰',
       description: 'Monetization strategies, streaming economics, touring business, and artist income',
+      demoAvailable: false
+    },
+    {
+      id: 'connect',
+      name: 'CONNECT',
+      label: 'Engagement',
+      day: 'Wednesday',
+      time: '3 PM',
+      color: 'bg-cyan-700',
+      subscribers: 10580,
+      engagement: 57.4,
+      growth: 23.2,
+      revenue: 26300,
+      emoji: '🤝',
+      description: 'Fan engagement strategies, social media growth, community building, and audience connection',
+      demoAvailable: false
+    },
+    {
+      id: 'ledger',
+      name: 'LEDGER',
+      label: 'Finances',
+      day: 'Friday',
+      time: '9 AM',
+      color: 'bg-emerald-800',
+      subscribers: 9240,
+      engagement: 64.1,
+      growth: 21.8,
+      revenue: 29800,
+      emoji: '📊',
+      description: 'Music industry finances, royalty accounting, tax strategies, and financial planning for artists',
       demoAvailable: false
     }
   ], []);
