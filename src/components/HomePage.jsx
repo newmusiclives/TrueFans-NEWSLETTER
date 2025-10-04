@@ -72,18 +72,18 @@ const HomePage = ({ genres, setActiveTab, onShowAuth, onShowDemo }) => {
       title: 'Music Genres',
       icon: '🎵',
       newsletters: genres.filter(g =>
-        ['pulse', 'storyteller', 'voltage', 'resonance', 'amplify', 'rhythm', 'underground', 'country'].includes(g.id)
+        ['pulse', 'storyteller', 'voltage', 'resonance', 'amplify', 'rhythm', 'underground', 'crossroads', 'roots', 'thunder', 'hearth', 'tribute'].includes(g.id)
       )
     },
     {
       title: 'Songwriting',
       icon: '✍️',
-      newsletters: genres.filter(g => ['pencraft', 'hitmaker'].includes(g.id))
+      newsletters: genres.filter(g => ['pencraft', 'hitmaker', 'lyricist', 'narrative'].includes(g.id))
     },
     {
       title: 'Music Business',
       icon: '💼',
-      newsletters: genres.filter(g => ['executive', 'revenue'].includes(g.id))
+      newsletters: genres.filter(g => ['executive', 'revenue', 'connect', 'ledger'].includes(g.id))
     }
   ];
 
