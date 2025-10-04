@@ -321,6 +321,34 @@ const StorytellerDemo = ({ showStorytellerDemo, setShowStorytellerDemo }) => {
                 </div>
               </div>
 
+              {/* Trend Analysis */}
+              <div className="bg-white border rounded-lg p-6">
+                <h4 className="text-lg font-bold text-gray-900 mb-4">📈 {storytellerData.trendAnalysis.title}</h4>
+                <p className="text-gray-700 mb-4">{storytellerData.trendAnalysis.summary}</p>
+
+                <div className="grid md:grid-cols-3 gap-4 mb-6">
+                  {storytellerData.trendAnalysis.keyInsights.map((insight, index) => (
+                    <div key={index} className="bg-green-50 rounded-lg p-4">
+                      <div className="text-sm text-green-800 font-medium">{insight.metric}</div>
+                      <div className="text-2xl font-bold text-green-900 mt-1">{insight.value}</div>
+                      <div className="text-xs text-green-700 mt-1">{insight.detail}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <div>
+                  <h6 className="font-semibold text-gray-900 mb-2">Sound Characteristics</h6>
+                  <div className="grid md:grid-cols-2 gap-2">
+                    {storytellerData.trendAnalysis.soundCharacteristics.map((char, index) => (
+                      <div key={index} className="flex items-start space-x-2 text-sm text-gray-700">
+                        <span className="text-green-600 mt-0.5">•</span>
+                        <span>{char}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
               {/* Radar Discoveries */}
               <div className="bg-white border rounded-lg p-6">
                 <h4 className="text-lg font-bold text-gray-900 mb-4">📡 On Our Radar</h4>
@@ -337,7 +365,90 @@ const StorytellerDemo = ({ showStorytellerDemo, setShowStorytellerDemo }) => {
                         </span>
                       </div>
                       <p className="text-sm text-gray-700 mb-2">{artist.description}</p>
-                      <p className="text-sm font-medium text-green-700">Prediction: {artist.prediction}</p>
+                      <p className="text-sm font-medium text-green-700 mb-1">Prediction: {artist.prediction}</p>
+                      <p className="text-xs text-gray-600 italic">Why it matters: {artist.whyItMatters}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Industry Intel */}
+              <div className="bg-white border rounded-lg p-6">
+                <h4 className="text-lg font-bold text-gray-900 mb-4">💼 {storytellerData.industryIntel.title}</h4>
+                <div className="space-y-4">
+                  {storytellerData.industryIntel.items.map((item, index) => (
+                    <div key={index} className="bg-gray-50 rounded-lg p-4">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded font-medium">{item.type}</span>
+                        <span className="font-semibold text-gray-900">{item.company}</span>
+                      </div>
+                      <p className="text-sm text-gray-700 mb-2">{item.detail}</p>
+                      <p className="text-sm text-green-700 font-medium">→ {item.implication}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Playlist Opportunities */}
+              <div className="bg-white border rounded-lg p-6">
+                <h4 className="text-lg font-bold text-gray-900 mb-4">🎧 {storytellerData.playlistOpportunities.title}</h4>
+                <div className="space-y-3">
+                  {storytellerData.playlistOpportunities.playlists.map((playlist, index) => (
+                    <div key={index} className="border border-gray-200 rounded-lg p-4">
+                      <div className="flex justify-between items-start mb-2">
+                        <div>
+                          <h6 className="font-semibold text-gray-900">{playlist.name}</h6>
+                          <p className="text-sm text-gray-600">{playlist.curator} • {playlist.followers} followers</p>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-xs text-gray-600">Fit Score</div>
+                          <div className="text-lg font-bold text-green-600">{playlist.fitScore}%</div>
+                        </div>
+                      </div>
+                      <div className="flex items-center space-x-2 mb-2">
+                        <span className={`text-xs px-2 py-1 rounded-full font-medium ${
+                          playlist.acceptingSubmissions
+                            ? 'bg-green-100 text-green-800'
+                            : 'bg-gray-100 text-gray-800'
+                        }`}>
+                          {playlist.acceptingSubmissions ? 'Accepting Submissions' : 'Not Accepting'}
+                        </span>
+                      </div>
+                      <p className="text-sm text-gray-700">💡 {playlist.tips}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Resources */}
+              <div className="bg-white border rounded-lg p-6">
+                <h4 className="text-lg font-bold text-gray-900 mb-4">🛠️ {storytellerData.resourcesForArtists.title}</h4>
+                <div className="grid md:grid-cols-2 gap-3">
+                  {storytellerData.resourcesForArtists.items.map((item, index) => (
+                    <div key={index} className="bg-gray-50 rounded-lg p-3">
+                      <div className="text-xs text-gray-600 uppercase font-medium mb-1">{item.category}</div>
+                      <div className="font-semibold text-gray-900 mb-1">{item.resource}</div>
+                      <p className="text-xs text-gray-700">{item.why}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Events */}
+              <div className="bg-white border rounded-lg p-6">
+                <h4 className="text-lg font-bold text-gray-900 mb-4">📅 {storytellerData.upcomingEvents.title}</h4>
+                <div className="space-y-3">
+                  {storytellerData.upcomingEvents.events.map((event, index) => (
+                    <div key={index} className="border-l-4 border-orange-500 pl-4 py-2">
+                      <h6 className="font-semibold text-gray-900">{event.name}</h6>
+                      <p className="text-sm text-gray-600">{event.date} • {event.location}</p>
+                      <p className="text-sm text-gray-700 mt-1">{event.relevance}</p>
+                      {event.applications && (
+                        <p className="text-sm text-orange-700 font-medium mt-1">Applications: {event.applications}</p>
+                      )}
+                      {event.earlyBird && (
+                        <p className="text-sm text-orange-700 font-medium mt-1">Early Bird: {event.earlyBird}</p>
+                      )}
                     </div>
                   ))}
                 </div>

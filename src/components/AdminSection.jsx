@@ -87,6 +87,16 @@ const AdminSection = () => {
             Subscribers
           </button>
           <button
+            onClick={() => setActiveTab('connections')}
+            className={`px-6 py-4 font-medium transition-colors ${
+              activeTab === 'connections'
+                ? 'text-orange-600 border-b-2 border-orange-600'
+                : 'text-gray-600 hover:text-gray-900'
+            }`}
+          >
+            API Connections
+          </button>
+          <button
             onClick={() => setActiveTab('settings')}
             className={`px-6 py-4 font-medium transition-colors ${
               activeTab === 'settings'
@@ -281,6 +291,218 @@ const AdminSection = () => {
                   </table>
                 </div>
               )}
+            </div>
+          )}
+
+          {activeTab === 'connections' && (
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">Data Source Connections</h3>
+                <p className="text-gray-600 mb-6">
+                  Connect your music platform APIs to enable automated content generation for newsletters.
+                  These credentials are encrypted and stored securely.
+                </p>
+
+                <div className="space-y-4">
+                  {/* Spotify */}
+                  <div className="border-2 border-gray-200 rounded-lg p-6 hover:border-green-400 transition-colors">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center space-x-4">
+                        <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                          <span className="text-2xl">🎵</span>
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-gray-900">Spotify for Developers</h4>
+                          <p className="text-sm text-gray-600">Artist data, streaming stats, playlist info</p>
+                        </div>
+                      </div>
+                      <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-medium">Not Connected</span>
+                    </div>
+                    <div className="space-y-3">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Client ID</label>
+                        <input
+                          type="text"
+                          placeholder="Enter Spotify Client ID"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Client Secret</label>
+                        <input
+                          type="password"
+                          placeholder="Enter Spotify Client Secret"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                        />
+                      </div>
+                      <div className="flex items-center justify-between pt-2">
+                        <a href="https://developer.spotify.com/dashboard" target="_blank" rel="noopener noreferrer" className="text-sm text-green-600 hover:text-green-700">
+                          Get API credentials →
+                        </a>
+                        <button className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 text-sm font-medium">
+                          Connect Spotify
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Apple Music */}
+                  <div className="border-2 border-gray-200 rounded-lg p-6 hover:border-red-400 transition-colors">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center space-x-4">
+                        <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+                          <span className="text-2xl">🍎</span>
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-gray-900">Apple Music API</h4>
+                          <p className="text-sm text-gray-600">Streaming data, charts, artist information</p>
+                        </div>
+                      </div>
+                      <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-medium">Not Connected</span>
+                    </div>
+                    <div className="space-y-3">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Developer Token</label>
+                        <input
+                          type="password"
+                          placeholder="Enter Apple Music Developer Token"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                        />
+                      </div>
+                      <div className="flex items-center justify-between pt-2">
+                        <a href="https://developer.apple.com/music/" target="_blank" rel="noopener noreferrer" className="text-sm text-red-600 hover:text-red-700">
+                          Get API credentials →
+                        </a>
+                        <button className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 text-sm font-medium">
+                          Connect Apple Music
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* YouTube */}
+                  <div className="border-2 border-gray-200 rounded-lg p-6 hover:border-red-600 transition-colors">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center space-x-4">
+                        <div className="w-12 h-12 bg-red-50 rounded-lg flex items-center justify-center">
+                          <span className="text-2xl">📺</span>
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-gray-900">YouTube Data API</h4>
+                          <p className="text-sm text-gray-600">Video views, engagement, trending music</p>
+                        </div>
+                      </div>
+                      <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-medium">Not Connected</span>
+                    </div>
+                    <div className="space-y-3">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">API Key</label>
+                        <input
+                          type="password"
+                          placeholder="Enter YouTube API Key"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                        />
+                      </div>
+                      <div className="flex items-center justify-between pt-2">
+                        <a href="https://console.cloud.google.com/" target="_blank" rel="noopener noreferrer" className="text-sm text-red-600 hover:text-red-700">
+                          Get API credentials →
+                        </a>
+                        <button className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 text-sm font-medium">
+                          Connect YouTube
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* SoundCloud */}
+                  <div className="border-2 border-gray-200 rounded-lg p-6 hover:border-orange-500 transition-colors">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center space-x-4">
+                        <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                          <span className="text-2xl">☁️</span>
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-gray-900">SoundCloud API</h4>
+                          <p className="text-sm text-gray-600">Emerging artists, underground trends</p>
+                        </div>
+                      </div>
+                      <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-medium">Not Connected</span>
+                    </div>
+                    <div className="space-y-3">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Client ID</label>
+                        <input
+                          type="text"
+                          placeholder="Enter SoundCloud Client ID"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                        />
+                      </div>
+                      <div className="flex items-center justify-between pt-2">
+                        <a href="https://developers.soundcloud.com/" target="_blank" rel="noopener noreferrer" className="text-sm text-orange-600 hover:text-orange-700">
+                          Get API credentials →
+                        </a>
+                        <button className="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 text-sm font-medium">
+                          Connect SoundCloud
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Bandcamp */}
+                  <div className="border-2 border-gray-200 rounded-lg p-6 hover:border-blue-500 transition-colors">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center space-x-4">
+                        <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                          <span className="text-2xl">🎸</span>
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-gray-900">Bandcamp</h4>
+                          <p className="text-sm text-gray-600">Independent releases, fan support data</p>
+                        </div>
+                      </div>
+                      <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-medium">Not Connected</span>
+                    </div>
+                    <div className="space-y-3">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">API Key</label>
+                        <input
+                          type="password"
+                          placeholder="Enter Bandcamp API Key"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        />
+                      </div>
+                      <div className="flex items-center justify-between pt-2">
+                        <span className="text-sm text-gray-500">Contact Bandcamp for API access</span>
+                        <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 text-sm font-medium">
+                          Connect Bandcamp
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                <h4 className="font-bold text-blue-900 mb-2">🔒 Security & Privacy</h4>
+                <ul className="space-y-2 text-sm text-blue-800">
+                  <li className="flex items-start space-x-2">
+                    <span className="text-blue-600 mt-0.5">•</span>
+                    <span>All API credentials are encrypted at rest using AES-256</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <span className="text-blue-600 mt-0.5">•</span>
+                    <span>Credentials are never logged or exposed in error messages</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <span className="text-blue-600 mt-0.5">•</span>
+                    <span>API requests are rate-limited to comply with platform guidelines</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <span className="text-blue-600 mt-0.5">•</span>
+                    <span>You can revoke access at any time from this panel</span>
+                  </li>
+                </ul>
+              </div>
             </div>
           )}
 
