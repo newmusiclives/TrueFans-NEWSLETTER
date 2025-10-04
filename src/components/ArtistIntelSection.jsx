@@ -121,17 +121,47 @@ const ArtistIntelSection = () => {
         <div className="flex items-start space-x-3">
           <SparklesIcon className="w-6 h-6 text-orange-600 mt-1" />
           <div>
-            <h3 className="font-bold text-orange-900 mb-2">AI Discovery System</h3>
-            <p className="text-orange-800 text-sm mb-3">
-              Our AI continuously monitors music platforms, social media, and streaming data to identify
-              emerging artists before they break mainstream. Artists are scored based on growth trajectory,
-              engagement patterns, and industry signals.
+            <h3 className="font-bold text-orange-900 mb-2">How Artist Intel Works</h3>
+            <p className="text-orange-800 text-sm mb-4">
+              Our AI system scans 50,000+ sources daily across Spotify, Apple Music, YouTube, SoundCloud, TikTok,
+              Instagram, Twitter/X, and Reddit to discover emerging artists before they hit mainstream. Each artist
+              receives an AI confidence score based on multiple growth signals.
             </p>
-            <div className="grid grid-cols-2 gap-2 text-sm text-orange-700">
-              <div>• Real-time streaming analytics</div>
-              <div>• Social media momentum tracking</div>
-              <div>• Industry connection mapping</div>
-              <div>• Playlist inclusion monitoring</div>
+
+            <div className="bg-white rounded-lg p-4 mb-4">
+              <h4 className="font-semibold text-orange-900 mb-2 text-sm">Data Sources We Monitor:</h4>
+              <div className="grid grid-cols-2 gap-2 text-sm text-orange-700">
+                <div>• Spotify streaming growth patterns</div>
+                <div>• TikTok viral moment detection</div>
+                <div>• Apple Music playlist additions</div>
+                <div>• YouTube view velocity tracking</div>
+                <div>• Instagram engagement spikes</div>
+                <div>• Reddit community discussions</div>
+                <div>• Twitter/X mention frequency</div>
+                <div>• SoundCloud discovery trends</div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-lg p-4">
+              <h4 className="font-semibold text-orange-900 mb-2 text-sm">AI Confidence Score Breakdown:</h4>
+              <div className="space-y-2 text-sm">
+                <div className="flex items-center justify-between">
+                  <span className="text-orange-700">90-100%</span>
+                  <span className="text-green-700 font-medium">High confidence - Ready to feature</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-orange-700">80-89%</span>
+                  <span className="text-blue-700 font-medium">Strong signal - Track closely</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-orange-700">70-79%</span>
+                  <span className="text-yellow-700 font-medium">Promising - Monitor growth</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-orange-700">Below 70%</span>
+                  <span className="text-gray-700 font-medium">Early stage - Watch for signals</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

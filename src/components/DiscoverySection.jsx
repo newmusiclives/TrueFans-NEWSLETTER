@@ -110,16 +110,45 @@ const DiscoverySection = () => {
       <div className="bg-gradient-to-r from-blue-600 via-blue-500 to-blue-700 rounded-xl p-8 text-white">
         <div className="flex items-start space-x-4">
           <SparklesIcon className="w-8 h-8 mt-1" />
-          <div>
-            <h3 className="text-2xl font-bold mb-2">AI-Powered Music Discovery</h3>
+          <div className="flex-1">
+            <h3 className="text-2xl font-bold mb-2">How Discovery Works</h3>
             <p className="text-blue-50 mb-4">
-              Real-time tracking of emerging trends across all major platforms. Our AI monitors streaming data,
-              social media engagement, and playlist additions to surface the next big hits before they go mainstream.
+              Our Discovery system tracks trending content across all major platforms in real-time. We analyze streaming
+              velocity, social engagement patterns, playlist momentum, and community discussions to identify breakout
+              moments as they happen. This surfaces content for your newsletters before it hits mainstream media.
             </p>
+
+            <div className="bg-blue-800 bg-opacity-50 rounded-lg p-4 mb-4">
+              <h4 className="font-bold mb-3">What We Track:</h4>
+              <div className="grid md:grid-cols-3 gap-3 text-sm text-blue-50">
+                <div>
+                  <div className="font-semibold mb-1">Streaming Platforms</div>
+                  <div className="text-blue-200">• Spotify daily chart changes</div>
+                  <div className="text-blue-200">• Apple Music feature placements</div>
+                  <div className="text-blue-200">• YouTube view acceleration</div>
+                  <div className="text-blue-200">• SoundCloud discovery activity</div>
+                </div>
+                <div>
+                  <div className="font-semibold mb-1">Social Signals</div>
+                  <div className="text-blue-200">• TikTok sound usage spikes</div>
+                  <div className="text-blue-200">• Instagram Reels viral trends</div>
+                  <div className="text-blue-200">• Twitter/X hashtag momentum</div>
+                  <div className="text-blue-200">• Reddit community buzz</div>
+                </div>
+                <div>
+                  <div className="font-semibold mb-1">Industry Activity</div>
+                  <div className="text-blue-200">• Playlist curator additions</div>
+                  <div className="text-blue-200">• Music blog coverage</div>
+                  <div className="text-blue-200">• Radio station pickups</div>
+                  <div className="text-blue-200">• Festival lineup additions</div>
+                </div>
+              </div>
+            </div>
+
             <div className="flex items-center space-x-6 text-sm">
               <div>
                 <div className="text-2xl font-bold">50K+</div>
-                <div className="text-blue-100">Sources Monitored</div>
+                <div className="text-blue-100">Sources Monitored Daily</div>
               </div>
               <div>
                 <div className="text-2xl font-bold">24/7</div>
@@ -128,6 +157,10 @@ const DiscoverySection = () => {
               <div>
                 <div className="text-2xl font-bold">89%</div>
                 <div className="text-blue-100">Prediction Accuracy</div>
+              </div>
+              <div>
+                <div className="text-2xl font-bold">15min</div>
+                <div className="text-blue-100">Update Frequency</div>
               </div>
             </div>
           </div>

@@ -109,7 +109,7 @@ export const useGenreData = () => {
       demoAvailable: false
     },
     {
-      id: 'country',
+      id: 'crossroads',
       name: 'CROSSROADS',
       label: 'Country/Americana',
       day: 'Sunday',
