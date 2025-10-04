@@ -69,7 +69,7 @@ const AuthModal = ({ isOpen, onClose, defaultMode = 'signin' }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl max-w-md w-full p-8 relative">
+      <div className="bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
@@ -77,18 +77,18 @@ const AuthModal = ({ isOpen, onClose, defaultMode = 'signin' }) => {
           <XIcon className="w-6 h-6" />
         </button>
 
-        <div className="mb-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">
+        <div className="mb-4 sm:mb-6">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
             {mode === 'signin' ? 'Welcome Back' : 'Create Account'}
           </h2>
-          <p className="text-gray-600">
+          <p className="text-sm sm:text-base text-gray-600">
             {mode === 'signin'
               ? 'Sign in to access your dashboard'
               : 'Sign up to get started with TrueFans'}
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
           {mode === 'signup' && (
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -98,7 +98,7 @@ const AuthModal = ({ isOpen, onClose, defaultMode = 'signin' }) => {
                 type="text"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-sm sm:text-base"
                 required
               />
             </div>
@@ -112,7 +112,7 @@ const AuthModal = ({ isOpen, onClose, defaultMode = 'signin' }) => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-sm sm:text-base"
               required
             />
           </div>
@@ -125,7 +125,7 @@ const AuthModal = ({ isOpen, onClose, defaultMode = 'signin' }) => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-sm sm:text-base"
               required
               minLength={6}
             />
@@ -140,7 +140,7 @@ const AuthModal = ({ isOpen, onClose, defaultMode = 'signin' }) => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition-colors font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full bg-orange-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg hover:bg-orange-700 transition-colors font-semibold disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
           >
             {loading ? 'Please wait...' : mode === 'signin' ? 'Sign In' : 'Sign Up'}
           </button>

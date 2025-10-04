@@ -16,15 +16,15 @@ const DashboardContent = ({
   setShowCreateModal, 
   setShowStorytellerDemo 
 }) => (
-  <div className="space-y-6">
-    <div className="flex items-center justify-between">
+  <div className="space-y-4 sm:space-y-6">
+    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
       <div>
-        <h2 className="text-3xl font-bold text-gray-900">Dashboard</h2>
-        <p className="text-gray-600 mt-1">12 specialized newsletters covering music genres, songwriting, and business</p>
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Dashboard</h2>
+        <p className="text-sm sm:text-base text-gray-600 mt-1">12 specialized newsletters covering music genres, songwriting, and business</p>
       </div>
-      <button 
+      <button
         onClick={() => setShowCreateModal(true)}
-        className="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 flex items-center space-x-2"
+        className="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 flex items-center justify-center space-x-2 text-sm sm:text-base"
       >
         <PlusIcon />
         <span>Create Newsletter</span>
@@ -32,8 +32,8 @@ const DashboardContent = ({
     </div>
 
     {/* Stats Grid */}
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div className="bg-white rounded-xl shadow-sm border p-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+      <div className="bg-white rounded-xl shadow-sm border p-4 sm:p-6">
         <div className="flex items-center justify-between">
           <div>
             <p className="text-sm font-medium text-gray-600">Total Subscribers</p>
@@ -47,55 +47,55 @@ const DashboardContent = ({
         </div>
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm border p-6">
+      <div className="bg-white rounded-xl shadow-sm border p-4 sm:p-6">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-sm font-medium text-gray-600">Newsletter Types</p>
-            <p className="text-3xl font-bold text-gray-900">{genres.length}</p>
+            <p className="text-xs sm:text-sm font-medium text-gray-600">Newsletter Types</p>
+            <p className="text-2xl sm:text-3xl font-bold text-gray-900">{genres.length}</p>
           </div>
-          <MusicalNoteIcon className="h-8 w-8 text-orange-600" />
+          <MusicalNoteIcon className="h-6 w-6 sm:h-8 sm:w-8 text-orange-600" />
         </div>
-        <div className="mt-4">
-          <span className="text-blue-600 text-sm font-medium">Daily + Weekend</span>
+        <div className="mt-3 sm:mt-4">
+          <span className="text-blue-600 text-xs sm:text-sm font-medium">Daily + Weekend</span>
         </div>
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm border p-6">
+      <div className="bg-white rounded-xl shadow-sm border p-4 sm:p-6">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-sm font-medium text-gray-600">Monthly Revenue</p>
-            <p className="text-3xl font-bold text-gray-900">${(dashboardStats.totalRevenue / 1000).toFixed(0)}K</p>
+            <p className="text-xs sm:text-sm font-medium text-gray-600">Monthly Revenue</p>
+            <p className="text-2xl sm:text-3xl font-bold text-gray-900">${(dashboardStats.totalRevenue / 1000).toFixed(0)}K</p>
           </div>
-          <CurrencyDollarIcon className="h-8 w-8 text-orange-600" />
+          <CurrencyDollarIcon className="h-6 w-6 sm:h-8 sm:w-8 text-orange-600" />
         </div>
-        <div className="mt-4 flex items-center">
+        <div className="mt-3 sm:mt-4 flex items-center">
           <TrendingUpIcon className="h-4 w-4 text-green-600 mr-1" />
-          <span className="text-green-600 text-sm font-medium">+23.4%</span>
+          <span className="text-green-600 text-xs sm:text-sm font-medium">+23.4%</span>
         </div>
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm border p-6">
+      <div className="bg-white rounded-xl shadow-sm border p-4 sm:p-6">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-sm font-medium text-gray-600">AI Confidence</p>
-            <p className="text-3xl font-bold text-gray-900">{dashboardStats.aiConfidence}%</p>
+            <p className="text-xs sm:text-sm font-medium text-gray-600">AI Confidence</p>
+            <p className="text-2xl sm:text-3xl font-bold text-gray-900">{dashboardStats.aiConfidence}%</p>
           </div>
-          <ChartBarIcon className="h-8 w-8 text-orange-600" />
+          <ChartBarIcon className="h-6 w-6 sm:h-8 sm:w-8 text-orange-600" />
         </div>
-        <div className="mt-4">
-          <span className="text-blue-600 text-sm font-medium">High Quality</span>
+        <div className="mt-3 sm:mt-4">
+          <span className="text-blue-600 text-xs sm:text-sm font-medium">High Quality</span>
         </div>
       </div>
     </div>
 
     {/* Newsletter Grid */}
     <div className="bg-white rounded-xl shadow-sm border">
-      <div className="p-6 border-b border-gray-200">
-        <h3 className="text-xl font-bold text-gray-900">Newsletter Network</h3>
-        <p className="text-gray-600 mt-1">Specialized music intelligence newsletters</p>
+      <div className="p-4 sm:p-6 border-b border-gray-200">
+        <h3 className="text-lg sm:text-xl font-bold text-gray-900">Newsletter Network</h3>
+        <p className="text-sm sm:text-base text-gray-600 mt-1">Specialized music intelligence newsletters</p>
       </div>
-      <div className="p-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="p-4 sm:p-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           {genres.map(genre => (
             <div key={genre.id} className="relative group">
               <div className={`${genre.color} rounded-lg p-4 text-white cursor-pointer transition-all hover:scale-105 ${

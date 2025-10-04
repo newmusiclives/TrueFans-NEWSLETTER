@@ -9,9 +9,9 @@ const CreateModal = ({ showCreateModal, setShowCreateModal, genres }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-xl shadow-2xl max-w-2xl w-full">
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
-          <h2 className="text-xl font-bold text-gray-900">Create New Newsletter</h2>
+      <div className="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200">
+          <h2 className="text-lg sm:text-xl font-bold text-gray-900">Create New Newsletter</h2>
           <button 
             onClick={() => setShowCreateModal(false)}
             className="text-gray-400 hover:text-gray-600"
@@ -20,15 +20,15 @@ const CreateModal = ({ showCreateModal, setShowCreateModal, genres }) => {
           </button>
         </div>
 
-        <div className="p-6 space-y-6">
+        <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-3">Select Genre</label>
-            <div className="grid grid-cols-2 gap-3">
+            <label className="block text-sm font-medium text-gray-700 mb-2 sm:mb-3">Select Genre</label>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
               {genres.map(genre => (
                 <button
                   key={genre.id}
                   onClick={() => setSelectedGenre(genre.id)}
-                  className={`${genre.color} text-white p-4 rounded-lg text-left transition-all ${
+                  className={`${genre.color} text-white p-3 sm:p-4 rounded-lg text-left transition-all ${
                     selectedGenre === genre.id ? 'ring-2 ring-orange-400' : 'hover:scale-105'
                   }`}
                 >
