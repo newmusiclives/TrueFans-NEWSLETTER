@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
 import LoadingSpinner from './LoadingSpinner';
+import FeatureGate from './FeatureGate';
 import { SparklesIcon, CheckIcon } from './Icons';
 
 const AutomationSection = () => {
@@ -58,7 +59,8 @@ const AutomationSection = () => {
   const activeCount = newsletters.filter(n => n.is_active).length;
 
   return (
-    <div className="space-y-6">
+    <FeatureGate requiredRole="premium">
+      <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-3xl font-bold text-gray-900">Automation</h2>
@@ -190,7 +192,8 @@ const AutomationSection = () => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </FeatureGate>
   );
 };
 

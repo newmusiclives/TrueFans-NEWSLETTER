@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { supabase } from '../lib/supabase';
 import { CheckIcon, SparklesIcon } from './Icons';
 
-const HomePage = ({ genres, setActiveTab }) => {
+const HomePage = ({ genres, setActiveTab, onShowAuth }) => {
   const [selectedNewsletters, setSelectedNewsletters] = useState([]);
   const [email, setEmail] = useState('');
   const [subscribeStatus, setSubscribeStatus] = useState('');
@@ -26,12 +27,44 @@ const HomePage = ({ genres, setActiveTab }) => {
     }
 
     setSubscribeStatus('Subscribing...');
-    setTimeout(() => {
+
+    try {
+      const { data: subscriber, error: subscriberError } = await supabase
+        .from('subscribers')
+        .upsert({ email, status: 'active' }, { onConflict: 'email' })
+        .select()
+        .single();
+
+      if (subscriberError) throw subscriberError;
+
+      const { data: newslettersData } = await supabase
+        .from('newsletters')
+        .select('id, slug')
+        .in('slug', selectedNewsletters);
+
+      if (newslettersData && newslettersData.length > 0) {
+        const subscriptions = newslettersData.map(newsletter => ({
+          subscriber_id: subscriber.id,
+          newsletter_id: newsletter.id,
+          status: 'subscribed'
+        }));
+
+        const { error: subscriptionError } = await supabase
+          .from('newsletter_subscriptions')
+          .upsert(subscriptions, { onConflict: 'subscriber_id,newsletter_id' });
+
+        if (subscriptionError) throw subscriptionError;
+      }
+
       setSubscribeStatus(`Successfully subscribed to ${selectedNewsletters.length} newsletter${selectedNewsletters.length > 1 ? 's' : ''}!`);
       setEmail('');
       setSelectedNewsletters([]);
       setTimeout(() => setSubscribeStatus(''), 3000);
-    }, 1000);
+    } catch (error) {
+      console.error('Subscription error:', error);
+      setSubscribeStatus('Error subscribing. Please try again.');
+      setTimeout(() => setSubscribeStatus(''), 3000);
+    }
   };
 
   const genreCategories = [

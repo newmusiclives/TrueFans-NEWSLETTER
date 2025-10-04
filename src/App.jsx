@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { useAuth } from './contexts/AuthContext';
 import Navigation from './components/Navigation';
 import HomePage from './components/HomePage';
+import PricingPage from './components/PricingPage';
 import DashboardContent from './components/DashboardContent';
 import NewslettersSection from './components/NewslettersSection';
 import AutomationSection from './components/AutomationSection';
@@ -10,6 +12,7 @@ import DiscoverySection from './components/DiscoverySection';
 import AdminSection from './components/AdminSection';
 import StorytellerDemo from './components/StorytellerDemo';
 import CreateModal from './components/CreateModal';
+import AuthModal from './components/AuthModal';
 import { useGenreData } from './hooks/useGenreData';
 
 const TrueFansNewsletterPlatform = () => {
@@ -17,8 +20,26 @@ const TrueFansNewsletterPlatform = () => {
   const [newsletters, setNewsletters] = useState([]);
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [showStorytellerDemo, setShowStorytellerDemo] = useState(false);
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [authMode, setAuthMode] = useState('signin');
 
+  const { user, loading: authLoading, isPremiumOrHigher } = useAuth();
   const genres = useGenreData();
+
+  const handleShowAuth = (mode = 'signin') => {
+    setAuthMode(mode);
+    setShowAuthModal(true);
+  };
+
+  const protectedTabs = ['dashboard', 'newsletters', 'automation', 'analytics', 'artists', 'discovery', 'admin'];
+
+  const handleTabChange = (tab) => {
+    if (protectedTabs.includes(tab) && !user) {
+      handleShowAuth('signin');
+      return;
+    }
+    setActiveTab(tab);
+  };
 
   // Dashboard Stats
   const dashboardStats = useMemo(() => ({
@@ -57,9 +78,22 @@ const TrueFansNewsletterPlatform = () => {
   }, []);
 
   const renderTabContent = () => {
+    if (authLoading) {
+      return (
+        <div className="flex items-center justify-center h-screen">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600 mx-auto mb-4"></div>
+            <p className="text-gray-600">Loading...</p>
+          </div>
+        </div>
+      );
+    }
+
     switch (activeTab) {
       case 'home':
-        return <HomePage genres={genres} setActiveTab={setActiveTab} />;
+        return <HomePage genres={genres} setActiveTab={handleTabChange} onShowAuth={handleShowAuth} />;
+      case 'pricing':
+        return <PricingPage onShowAuth={handleShowAuth} />;
       case 'dashboard':
         return (
           <DashboardContent
@@ -88,19 +122,29 @@ const TrueFansNewsletterPlatform = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 flex">
-      <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
-      
+      <Navigation
+        activeTab={activeTab}
+        setActiveTab={handleTabChange}
+        onShowAuth={handleShowAuth}
+      />
+
       <main className="flex-1 p-8">
         {renderTabContent()}
       </main>
 
-      <CreateModal 
+      <AuthModal
+        isOpen={showAuthModal}
+        onClose={() => setShowAuthModal(false)}
+        defaultMode={authMode}
+      />
+
+      <CreateModal
         showCreateModal={showCreateModal}
         setShowCreateModal={setShowCreateModal}
         genres={genres}
       />
 
-      <StorytellerDemo 
+      <StorytellerDemo
         showStorytellerDemo={showStorytellerDemo}
         setShowStorytellerDemo={setShowStorytellerDemo}
       />
