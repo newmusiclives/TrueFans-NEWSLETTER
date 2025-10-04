@@ -20,7 +20,29 @@ const PricingPage = ({ onShowAuth }) => {
       ],
       cta: 'Get Started',
       popular: false,
-      color: 'gray'
+      color: 'gray',
+      audience: 'Fans'
+    },
+    {
+      name: 'Artist Platform',
+      price: 20,
+      period: 'month',
+      description: 'For artists who want to grow their fanbase',
+      features: [
+        'All Free features',
+        'Submit content to newsletters',
+        'Feature in genre newsletters',
+        'Build your fanbase directly',
+        'Offer free or $10/month fan subscriptions',
+        'Keep 80% of fan subscription revenue',
+        'Direct fan communication',
+        'Artist analytics dashboard',
+        'Verified artist badge'
+      ],
+      cta: 'Start as Artist',
+      popular: true,
+      color: 'blue',
+      audience: 'Artists'
     },
     {
       name: 'Premium',
@@ -39,8 +61,9 @@ const PricingPage = ({ onShowAuth }) => {
         'Advanced filtering and search'
       ],
       cta: 'Upgrade to Premium',
-      popular: true,
-      color: 'orange'
+      popular: false,
+      color: 'orange',
+      audience: 'Professionals'
     },
     {
       name: 'Enterprise',
@@ -60,7 +83,8 @@ const PricingPage = ({ onShowAuth }) => {
       ],
       cta: 'Contact Sales',
       popular: false,
-      color: 'gray'
+      color: 'gray',
+      audience: 'Labels'
     }
   ];
 
@@ -108,18 +132,18 @@ const PricingPage = ({ onShowAuth }) => {
         </div>
       )}
 
-      <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
         {plans.map((plan) => (
           <div
             key={plan.name}
             className={`relative bg-white rounded-2xl shadow-sm border-2 p-8 ${
-              plan.popular ? 'border-orange-500' : 'border-gray-200'
+              plan.popular ? (plan.color === 'blue' ? 'border-blue-500' : 'border-orange-500') : 'border-gray-200'
             }`}
           >
             {plan.popular && (
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                <span className="bg-orange-600 text-white px-4 py-1 rounded-full text-sm font-bold">
-                  Most Popular
+                <span className={`${plan.color === 'blue' ? 'bg-blue-600' : 'bg-orange-600'} text-white px-4 py-1 rounded-full text-sm font-bold`}>
+                  {plan.audience}
                 </span>
               </div>
             )}
@@ -146,7 +170,9 @@ const PricingPage = ({ onShowAuth }) => {
               onClick={() => handleCTAClick(plan)}
               className={`w-full py-3 px-6 rounded-lg font-semibold transition-colors ${
                 plan.popular
-                  ? 'bg-orange-600 text-white hover:bg-orange-700'
+                  ? plan.color === 'blue'
+                    ? 'bg-blue-600 text-white hover:bg-blue-700'
+                    : 'bg-orange-600 text-white hover:bg-orange-700'
                   : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
               }`}
             >

@@ -34,13 +34,19 @@ const Navigation = ({ activeTab, setActiveTab, onShowAuth }) => {
           { id: 'home', label: 'Home', icon: HomeIcon },
           { id: 'pricing', label: 'Pricing', icon: CurrencyDollarIcon },
           { id: 'dashboard', label: 'Dashboard', icon: ChartBarIcon, requiresAuth: true },
+          { id: 'artist-dashboard', label: 'Artist Hub', icon: MusicalNoteIcon, requiresAuth: true, artistOnly: true },
           { id: 'newsletters', label: 'Newsletters', icon: DocumentTextIcon, requiresAuth: true },
           { id: 'automation', label: 'Automation', icon: CogIcon, requiresAuth: true },
           { id: 'analytics', label: 'Analytics', icon: ChartBarIcon, requiresAuth: true },
           { id: 'artists', label: 'Artist Intel', icon: UserGroupIcon, requiresAuth: true },
           { id: 'discovery', label: 'Discovery', icon: MagnifyingGlassIcon, requiresAuth: true },
           { id: 'admin', label: 'Admin Portal', icon: ShieldCheckIcon, requiresAuth: true }
-        ].map(item => (
+        ].filter(item => {
+          if (item.artistOnly) {
+            return profile?.role === 'artist';
+          }
+          return true;
+        }).map(item => (
           <button
             key={item.id}
             onClick={() => setActiveTab(item.id)}

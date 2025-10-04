@@ -4,6 +4,7 @@ import Navigation from './components/Navigation';
 import HomePage from './components/HomePage';
 import PricingPage from './components/PricingPage';
 import DashboardContent from './components/DashboardContent';
+import ArtistDashboard from './components/ArtistDashboard';
 import NewslettersSection from './components/NewslettersSection';
 import AutomationSection from './components/AutomationSection';
 import AnalyticsSection from './components/AnalyticsSection';
@@ -103,6 +104,8 @@ const TrueFansNewsletterPlatform = () => {
             setShowStorytellerDemo={setShowStorytellerDemo}
           />
         );
+      case 'artist-dashboard':
+        return <ArtistDashboard />;
       case 'newsletters':
         return <NewslettersSection />;
       case 'automation':
