@@ -9,7 +9,8 @@ import {
   MagnifyingGlassIcon,
   ShieldCheckIcon,
   SpeakerWaveIcon,
-  CurrencyDollarIcon
+  CurrencyDollarIcon,
+  MusicalNoteIcon
 } from './Icons';
 
 const Navigation = ({ activeTab, setActiveTab, onShowAuth }) => {
