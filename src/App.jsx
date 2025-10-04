@@ -1,12 +1,19 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import Navigation from './components/Navigation';
+import HomePage from './components/HomePage';
 import DashboardContent from './components/DashboardContent';
+import NewslettersSection from './components/NewslettersSection';
+import AutomationSection from './components/AutomationSection';
+import AnalyticsSection from './components/AnalyticsSection';
+import ArtistIntelSection from './components/ArtistIntelSection';
+import DiscoverySection from './components/DiscoverySection';
+import AdminSection from './components/AdminSection';
 import StorytellerDemo from './components/StorytellerDemo';
 import CreateModal from './components/CreateModal';
 import { useGenreData } from './hooks/useGenreData';
 
 const TrueFansNewsletterPlatform = () => {
-  const [activeTab, setActiveTab] = useState('dashboard');
+  const [activeTab, setActiveTab] = useState('home');
   const [newsletters, setNewsletters] = useState([]);
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [showStorytellerDemo, setShowStorytellerDemo] = useState(false);
@@ -49,12 +56,13 @@ const TrueFansNewsletterPlatform = () => {
     ]);
   }, []);
 
-  // Placeholder content for other tabs
   const renderTabContent = () => {
     switch (activeTab) {
+      case 'home':
+        return <HomePage genres={genres} setActiveTab={setActiveTab} />;
       case 'dashboard':
         return (
-          <DashboardContent 
+          <DashboardContent
             dashboardStats={dashboardStats}
             genres={genres}
             setShowCreateModal={setShowCreateModal}
@@ -62,95 +70,17 @@ const TrueFansNewsletterPlatform = () => {
           />
         );
       case 'newsletters':
-        return (
-          <div className="space-y-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <h2 className="text-3xl font-bold text-gray-900">Newsletters</h2>
-                <p className="text-gray-600 mt-1">Manage your newsletter content and performance</p>
-              </div>
-            </div>
-            <div className="bg-white rounded-xl shadow-sm border p-8 text-center">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Newsletter Management</h3>
-              <p className="text-gray-600">View and manage all your published and scheduled newsletters</p>
-            </div>
-          </div>
-        );
+        return <NewslettersSection />;
       case 'automation':
-        return (
-          <div className="space-y-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <h2 className="text-3xl font-bold text-gray-900">Automation</h2>
-                <p className="text-gray-600 mt-1">Configure AI-powered newsletter automation</p>
-              </div>
-            </div>
-            <div className="bg-white rounded-xl shadow-sm border p-8 text-center">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Automation Settings</h3>
-              <p className="text-gray-600">Set up automated newsletter generation and scheduling</p>
-            </div>
-          </div>
-        );
+        return <AutomationSection />;
       case 'analytics':
-        return (
-          <div className="space-y-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <h2 className="text-3xl font-bold text-gray-900">Analytics</h2>
-                <p className="text-gray-600 mt-1">Track performance and engagement metrics</p>
-              </div>
-            </div>
-            <div className="bg-white rounded-xl shadow-sm border p-8 text-center">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Performance Analytics</h3>
-              <p className="text-gray-600">Detailed insights into newsletter performance and subscriber engagement</p>
-            </div>
-          </div>
-        );
+        return <AnalyticsSection />;
       case 'artists':
-        return (
-          <div className="space-y-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <h2 className="text-3xl font-bold text-gray-900">Artist Intel</h2>
-                <p className="text-gray-600 mt-1">AI-powered artist discovery and intelligence</p>
-              </div>
-            </div>
-            <div className="bg-white rounded-xl shadow-sm border p-8 text-center">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Artist Intelligence</h3>
-              <p className="text-gray-600">Discover emerging artists and track industry trends</p>
-            </div>
-          </div>
-        );
+        return <ArtistIntelSection />;
       case 'discovery':
-        return (
-          <div className="space-y-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <h2 className="text-3xl font-bold text-gray-900">Discovery</h2>
-                <p className="text-gray-600 mt-1">Explore new music and trending content</p>
-              </div>
-            </div>
-            <div className="bg-white rounded-xl shadow-sm border p-8 text-center">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Music Discovery</h3>
-              <p className="text-gray-600">Find new artists and tracks across all genres</p>
-            </div>
-          </div>
-        );
+        return <DiscoverySection />;
       case 'admin':
-        return (
-          <div className="space-y-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <h2 className="text-3xl font-bold text-gray-900">Admin Portal</h2>
-                <p className="text-gray-600 mt-1">Platform administration and settings</p>
-              </div>
-            </div>
-            <div className="bg-white rounded-xl shadow-sm border p-8 text-center">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Administration</h3>
-              <p className="text-gray-600">Manage platform settings, users, and configurations</p>
-            </div>
-          </div>
-        );
+        return <AdminSection />;
       default:
         return null;
     }

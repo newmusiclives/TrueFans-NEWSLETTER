@@ -26,7 +26,8 @@ const Navigation = ({ activeTab, setActiveTab }) => (
 
     <div className="flex-1 px-4 space-y-2">
       {[
-        { id: 'dashboard', label: 'Dashboard', icon: HomeIcon },
+        { id: 'home', label: 'Home', icon: HomeIcon },
+        { id: 'dashboard', label: 'Dashboard', icon: ChartBarIcon },
         { id: 'newsletters', label: 'Newsletters', icon: DocumentTextIcon },
         { id: 'automation', label: 'Automation', icon: CogIcon },
         { id: 'analytics', label: 'Analytics', icon: ChartBarIcon },
