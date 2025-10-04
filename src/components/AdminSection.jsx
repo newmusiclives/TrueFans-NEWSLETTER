@@ -482,6 +482,251 @@ const AdminSection = () => {
                 </div>
               </div>
 
+              <div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">AI & Content Generation</h3>
+                <p className="text-gray-600 mb-6">
+                  Connect AI services to power content generation, trend analysis, and intelligent writing for your newsletters.
+                </p>
+
+                <div className="space-y-4">
+                  {/* Anthropic Claude */}
+                  <div className="border-2 border-gray-200 rounded-lg p-6 hover:border-purple-400 transition-colors">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center space-x-4">
+                        <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                          <span className="text-2xl">🤖</span>
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-gray-900">Anthropic Claude</h4>
+                          <p className="text-sm text-gray-600">Content writing, trend analysis, editorial intelligence</p>
+                        </div>
+                      </div>
+                      <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-medium">Not Connected</span>
+                    </div>
+                    <div className="space-y-3">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">API Key</label>
+                        <input
+                          type="password"
+                          placeholder="Enter Anthropic API Key"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                        />
+                      </div>
+                      <div className="bg-purple-50 rounded p-3">
+                        <p className="text-xs text-purple-800">
+                          <strong>Powers:</strong> Newsletter writing, artist bio generation, trend summaries, content personalization
+                        </p>
+                      </div>
+                      <div className="flex items-center justify-between pt-2">
+                        <a href="https://console.anthropic.com/" target="_blank" rel="noopener noreferrer" className="text-sm text-purple-600 hover:text-purple-700">
+                          Get API credentials →
+                        </a>
+                        <button className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 text-sm font-medium">
+                          Connect Claude
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* OpenAI */}
+                  <div className="border-2 border-gray-200 rounded-lg p-6 hover:border-teal-400 transition-colors">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center space-x-4">
+                        <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center">
+                          <span className="text-2xl">✨</span>
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-gray-900">OpenAI GPT</h4>
+                          <p className="text-sm text-gray-600">Content generation, summaries, creative writing</p>
+                        </div>
+                      </div>
+                      <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-medium">Not Connected</span>
+                    </div>
+                    <div className="space-y-3">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">API Key</label>
+                        <input
+                          type="password"
+                          placeholder="Enter OpenAI API Key"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                        />
+                      </div>
+                      <div className="bg-teal-50 rounded p-3">
+                        <p className="text-xs text-teal-800">
+                          <strong>Powers:</strong> Alternative content generation, creative headlines, image generation with DALL-E
+                        </p>
+                      </div>
+                      <div className="flex items-center justify-between pt-2">
+                        <a href="https://platform.openai.com/" target="_blank" rel="noopener noreferrer" className="text-sm text-teal-600 hover:text-teal-700">
+                          Get API credentials →
+                        </a>
+                        <button className="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 text-sm font-medium">
+                          Connect OpenAI
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Perplexity */}
+                  <div className="border-2 border-gray-200 rounded-lg p-6 hover:border-indigo-400 transition-colors">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center space-x-4">
+                        <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
+                          <span className="text-2xl">🔍</span>
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-gray-900">Perplexity AI</h4>
+                          <p className="text-sm text-gray-600">Real-time research, fact-checking, current events</p>
+                        </div>
+                      </div>
+                      <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-medium">Not Connected</span>
+                    </div>
+                    <div className="space-y-3">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">API Key</label>
+                        <input
+                          type="password"
+                          placeholder="Enter Perplexity API Key"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                        />
+                      </div>
+                      <div className="bg-indigo-50 rounded p-3">
+                        <p className="text-xs text-indigo-800">
+                          <strong>Powers:</strong> Current music news research, artist background checks, industry trend verification
+                        </p>
+                      </div>
+                      <div className="flex items-center justify-between pt-2">
+                        <a href="https://www.perplexity.ai/settings/api" target="_blank" rel="noopener noreferrer" className="text-sm text-indigo-600 hover:text-indigo-700">
+                          Get API credentials →
+                        </a>
+                        <button className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 text-sm font-medium">
+                          Connect Perplexity
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">News & Social Intelligence</h3>
+                <p className="text-gray-600 mb-6">
+                  Monitor music news, social media trends, and industry updates to keep your newsletters current.
+                </p>
+
+                <div className="space-y-4">
+                  {/* NewsAPI */}
+                  <div className="border-2 border-gray-200 rounded-lg p-6 hover:border-gray-600 transition-colors">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center space-x-4">
+                        <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+                          <span className="text-2xl">📰</span>
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-gray-900">NewsAPI</h4>
+                          <p className="text-sm text-gray-600">Music industry news, artist features, festival announcements</p>
+                        </div>
+                      </div>
+                      <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-medium">Not Connected</span>
+                    </div>
+                    <div className="space-y-3">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">API Key</label>
+                        <input
+                          type="password"
+                          placeholder="Enter NewsAPI Key"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent"
+                        />
+                      </div>
+                      <div className="flex items-center justify-between pt-2">
+                        <a href="https://newsapi.org/register" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-600 hover:text-gray-700">
+                          Get API credentials →
+                        </a>
+                        <button className="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 text-sm font-medium">
+                          Connect NewsAPI
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Twitter/X API */}
+                  <div className="border-2 border-gray-200 rounded-lg p-6 hover:border-black transition-colors">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center space-x-4">
+                        <div className="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center">
+                          <span className="text-2xl text-white">𝕏</span>
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-gray-900">X (Twitter) API</h4>
+                          <p className="text-sm text-gray-600">Trending topics, artist mentions, viral moments</p>
+                        </div>
+                      </div>
+                      <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-medium">Not Connected</span>
+                    </div>
+                    <div className="space-y-3">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Bearer Token</label>
+                        <input
+                          type="password"
+                          placeholder="Enter X API Bearer Token"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                        />
+                      </div>
+                      <div className="flex items-center justify-between pt-2">
+                        <a href="https://developer.twitter.com/" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-600 hover:text-gray-700">
+                          Get API credentials →
+                        </a>
+                        <button className="bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-800 text-sm font-medium">
+                          Connect X
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Reddit API */}
+                  <div className="border-2 border-gray-200 rounded-lg p-6 hover:border-orange-600 transition-colors">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center space-x-4">
+                        <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                          <span className="text-2xl">🤖</span>
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-gray-900">Reddit API</h4>
+                          <p className="text-sm text-gray-600">Community discussions, genre subreddits, fan feedback</p>
+                        </div>
+                      </div>
+                      <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-medium">Not Connected</span>
+                    </div>
+                    <div className="space-y-3">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Client ID</label>
+                        <input
+                          type="text"
+                          placeholder="Enter Reddit Client ID"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Client Secret</label>
+                        <input
+                          type="password"
+                          placeholder="Enter Reddit Client Secret"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                        />
+                      </div>
+                      <div className="flex items-center justify-between pt-2">
+                        <a href="https://www.reddit.com/prefs/apps" target="_blank" rel="noopener noreferrer" className="text-sm text-orange-600 hover:text-orange-700">
+                          Get API credentials →
+                        </a>
+                        <button className="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 text-sm font-medium">
+                          Connect Reddit
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
                 <h4 className="font-bold text-blue-900 mb-2">🔒 Security & Privacy</h4>
                 <ul className="space-y-2 text-sm text-blue-800">
