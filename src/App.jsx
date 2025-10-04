@@ -125,13 +125,15 @@ const TrueFansNewsletterPlatform = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 flex">
-      <Navigation
-        activeTab={activeTab}
-        setActiveTab={handleTabChange}
-        onShowAuth={handleShowAuth}
-      />
+      {activeTab !== 'home' && (
+        <Navigation
+          activeTab={activeTab}
+          setActiveTab={handleTabChange}
+          onShowAuth={handleShowAuth}
+        />
+      )}
 
-      <main className="flex-1 p-8">
+      <main className={activeTab === 'home' ? 'flex-1' : 'flex-1 p-8'}>
         {renderTabContent()}
       </main>
 

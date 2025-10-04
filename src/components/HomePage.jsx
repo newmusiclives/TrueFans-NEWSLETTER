@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { supabase } from '../lib/supabase';
-import { CheckIcon, SparklesIcon } from './Icons';
+import { CheckIcon, SparklesIcon, SpeakerWaveIcon } from './Icons';
 
 const HomePage = ({ genres, setActiveTab, onShowAuth, onShowDemo }) => {
   const [selectedNewsletters, setSelectedNewsletters] = useState([]);
@@ -88,9 +88,51 @@ const HomePage = ({ genres, setActiveTab, onShowAuth, onShowDemo }) => {
   ];
 
   return (
-    <div className="space-y-12">
+    <div className="min-h-screen">
+      {/* Header Navigation */}
+      <header className="bg-white border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center space-x-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-orange-600 to-amber-600 rounded-lg flex items-center justify-center">
+              <SpeakerWaveIcon className="w-6 h-6 text-white" />
+            </div>
+            <div>
+              <h1 className="text-xl font-bold text-gray-900">TrueFans</h1>
+              <p className="text-xs text-gray-600">Music Intelligence</p>
+            </div>
+          </div>
+          <div className="flex items-center space-x-4">
+            <button
+              onClick={() => setActiveTab('pricing')}
+              className="text-gray-700 hover:text-gray-900 font-medium transition-colors"
+            >
+              Pricing
+            </button>
+            <button
+              onClick={onShowDemo}
+              className="text-gray-700 hover:text-gray-900 font-medium transition-colors"
+            >
+              Demo
+            </button>
+            <button
+              onClick={() => onShowAuth('signin')}
+              className="text-gray-700 hover:text-gray-900 font-medium transition-colors"
+            >
+              Sign In
+            </button>
+            <button
+              onClick={() => onShowAuth('signup')}
+              className="bg-orange-600 text-white px-6 py-2 rounded-lg hover:bg-orange-700 transition-colors font-medium"
+            >
+              Get Started
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <div className="space-y-12">
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-orange-600 via-orange-500 to-amber-600 rounded-2xl p-12 text-white text-center">
+      <div className="bg-gradient-to-br from-orange-600 via-orange-500 to-amber-600 p-12 md:p-20 text-white text-center">
         <div className="max-w-4xl mx-auto">
           <div className="inline-flex items-center space-x-2 bg-white/20 rounded-full px-4 py-2 mb-6">
             <SparklesIcon className="w-5 h-5" />
@@ -287,6 +329,60 @@ const HomePage = ({ genres, setActiveTab, onShowAuth, onShowDemo }) => {
         >
           Go to Dashboard
         </button>
+      </div>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-12 -mx-12 -mb-12 mt-12">
+        <div className="max-w-7xl mx-auto px-12">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="w-10 h-10 bg-gradient-to-br from-orange-600 to-amber-600 rounded-lg flex items-center justify-center">
+                  <SpeakerWaveIcon className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold">TrueFans</h3>
+                  <p className="text-xs text-gray-400">Music Intelligence</p>
+                </div>
+              </div>
+              <p className="text-gray-400 text-sm">
+                AI-powered music discovery and industry intelligence.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-bold mb-4">Product</h4>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li><button onClick={onShowDemo} className="hover:text-white transition-colors">Demo</button></li>
+                <li><button onClick={() => setActiveTab('pricing')} className="hover:text-white transition-colors">Pricing</button></li>
+                <li><button className="hover:text-white transition-colors">Features</button></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-bold mb-4">For Artists</h4>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li><button onClick={() => setActiveTab('pricing')} className="hover:text-white transition-colors">Artist Platform</button></li>
+                <li><button className="hover:text-white transition-colors">Submit Content</button></li>
+                <li><button className="hover:text-white transition-colors">Revenue Share</button></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-bold mb-4">Company</h4>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li><button className="hover:text-white transition-colors">About</button></li>
+                <li><button className="hover:text-white transition-colors">Contact</button></li>
+                <li><button className="hover:text-white transition-colors">Privacy</button></li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
+            <p>&copy; 2025 TrueFans. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
       </div>
     </div>
   );
