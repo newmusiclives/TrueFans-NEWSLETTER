@@ -92,7 +92,7 @@ const TrueFansNewsletterPlatform = () => {
 
     switch (activeTab) {
       case 'home':
-        return <HomePage genres={genres} setActiveTab={handleTabChange} onShowAuth={handleShowAuth} />;
+        return <HomePage genres={genres} setActiveTab={handleTabChange} onShowAuth={handleShowAuth} onShowDemo={() => setShowStorytellerDemo(true)} />;
       case 'pricing':
         return <PricingPage onShowAuth={handleShowAuth} />;
       case 'dashboard':

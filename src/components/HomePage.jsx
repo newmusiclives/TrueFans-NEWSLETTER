@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { supabase } from '../lib/supabase';
 import { CheckIcon, SparklesIcon } from './Icons';
 
-const HomePage = ({ genres, setActiveTab, onShowAuth }) => {
+const HomePage = ({ genres, setActiveTab, onShowAuth, onShowDemo }) => {
   const [selectedNewsletters, setSelectedNewsletters] = useState([]);
   const [email, setEmail] = useState('');
   const [subscribeStatus, setSubscribeStatus] = useState('');
@@ -121,14 +121,23 @@ const HomePage = ({ genres, setActiveTab, onShowAuth }) => {
             </div>
           </div>
 
-          <button
-            onClick={() => {
-              document.getElementById('subscribe-section').scrollIntoView({ behavior: 'smooth' });
-            }}
-            className="bg-white text-orange-600 px-8 py-4 rounded-lg hover:bg-orange-50 font-semibold text-lg transition-colors"
-          >
-            Get Started Free
-          </button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button
+              onClick={() => {
+                document.getElementById('subscribe-section').scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="bg-white text-orange-600 px-8 py-4 rounded-lg hover:bg-orange-50 font-semibold text-lg transition-colors"
+            >
+              Get Started Free
+            </button>
+            <button
+              onClick={onShowDemo}
+              className="bg-white/10 backdrop-blur border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white/20 font-semibold text-lg transition-colors flex items-center space-x-2"
+            >
+              <span>🎸</span>
+              <span>View Demo Newsletter</span>
+            </button>
+          </div>
         </div>
       </div>
 
