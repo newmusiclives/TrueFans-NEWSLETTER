@@ -4,8 +4,28 @@ import { XMarkIcon, PlusIcon } from './Icons';
 const CreateModal = ({ showCreateModal, setShowCreateModal, genres }) => {
   const [selectedGenre, setSelectedGenre] = useState('');
   const [customTitle, setCustomTitle] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   if (!showCreateModal) return null;
+
+  const handleGenerate = async () => {
+    if (!selectedGenre) return;
+
+    setLoading(true);
+    setError('');
+
+    try {
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      setShowCreateModal(false);
+      setSelectedGenre('');
+      setCustomTitle('');
+    } catch (err) {
+      setError('Failed to generate newsletter. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
@@ -64,19 +84,36 @@ const CreateModal = ({ showCreateModal, setShowCreateModal, genres }) => {
             </ul>
           </div>
 
+          {error && (
+            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+              {error}
+            </div>
+          )}
+
           <div className="flex space-x-3">
             <button
               onClick={() => setShowCreateModal(false)}
-              className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50"
+              disabled={loading}
+              className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Cancel
             </button>
             <button
-              disabled={!selectedGenre}
+              onClick={handleGenerate}
+              disabled={!selectedGenre || loading}
               className="flex-1 bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
             >
-              <PlusIcon />
-              <span>Generate Newsletter</span>
+              {loading ? (
+                <>
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                  <span>Generating...</span>
+                </>
+              ) : (
+                <>
+                  <PlusIcon />
+                  <span>Generate Newsletter</span>
+                </>
+              )}
             </button>
           </div>
         </div>

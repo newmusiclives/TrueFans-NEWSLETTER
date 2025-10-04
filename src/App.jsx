@@ -14,6 +14,7 @@ import AdminSection from './components/AdminSection';
 import StorytellerDemo from './components/StorytellerDemo';
 import CreateModal from './components/CreateModal';
 import AuthModal from './components/AuthModal';
+import ErrorBoundary from './components/ErrorBoundary';
 import { useGenreData } from './hooks/useGenreData';
 
 const TrueFansNewsletterPlatform = () => {
@@ -97,27 +98,57 @@ const TrueFansNewsletterPlatform = () => {
         return <PricingPage onShowAuth={handleShowAuth} />;
       case 'dashboard':
         return (
-          <DashboardContent
-            dashboardStats={dashboardStats}
-            genres={genres}
-            setShowCreateModal={setShowCreateModal}
-            setShowStorytellerDemo={setShowStorytellerDemo}
-          />
+          <ErrorBoundary>
+            <DashboardContent
+              dashboardStats={dashboardStats}
+              genres={genres}
+              setShowCreateModal={setShowCreateModal}
+              setShowStorytellerDemo={setShowStorytellerDemo}
+            />
+          </ErrorBoundary>
         );
       case 'artist-dashboard':
-        return <ArtistDashboard />;
+        return (
+          <ErrorBoundary>
+            <ArtistDashboard />
+          </ErrorBoundary>
+        );
       case 'newsletters':
-        return <NewslettersSection />;
+        return (
+          <ErrorBoundary>
+            <NewslettersSection />
+          </ErrorBoundary>
+        );
       case 'automation':
-        return <AutomationSection />;
+        return (
+          <ErrorBoundary>
+            <AutomationSection />
+          </ErrorBoundary>
+        );
       case 'analytics':
-        return <AnalyticsSection />;
+        return (
+          <ErrorBoundary>
+            <AnalyticsSection />
+          </ErrorBoundary>
+        );
       case 'artists':
-        return <ArtistIntelSection />;
+        return (
+          <ErrorBoundary>
+            <ArtistIntelSection />
+          </ErrorBoundary>
+        );
       case 'discovery':
-        return <DiscoverySection />;
+        return (
+          <ErrorBoundary>
+            <DiscoverySection />
+          </ErrorBoundary>
+        );
       case 'admin':
-        return <AdminSection />;
+        return (
+          <ErrorBoundary>
+            <AdminSection />
+          </ErrorBoundary>
+        );
       default:
         return null;
     }

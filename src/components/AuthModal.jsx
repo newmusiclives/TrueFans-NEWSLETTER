@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { XIcon } from './Icons';
+import { validateEmail, validatePassword, validateRequired } from '../utils/validation';
 
 const AuthModal = ({ isOpen, onClose, defaultMode = 'signin' }) => {
   const [mode, setMode] = useState(defaultMode);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
-  const [error, setError] = useState('');
+  const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
@@ -15,9 +16,32 @@ const AuthModal = ({ isOpen, onClose, defaultMode = 'signin' }) => {
 
   if (!isOpen) return null;
 
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (mode === 'signup') {
+      const nameError = validateRequired(fullName, 'Full name');
+      if (nameError) newErrors.fullName = nameError;
+    }
+
+    const emailError = validateEmail(email);
+    if (emailError) newErrors.email = emailError;
+
+    const passwordError = validatePassword(password);
+    if (passwordError) newErrors.password = passwordError;
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+    setErrors({});
+
+    if (!validateForm()) {
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -29,7 +53,7 @@ const AuthModal = ({ isOpen, onClose, defaultMode = 'signin' }) => {
         setSuccess(true);
       }
     } catch (err) {
-      setError(err.message || 'An error occurred');
+      setErrors({ submit: err.message || 'An error occurred' });
     } finally {
       setLoading(false);
     }
@@ -98,9 +122,13 @@ const AuthModal = ({ isOpen, onClose, defaultMode = 'signin' }) => {
                 type="text"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
-                className="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-sm sm:text-base"
-                required
+                className={`w-full px-3 py-2 sm:px-4 sm:py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-sm sm:text-base ${
+                  errors.fullName ? 'border-red-500' : 'border-gray-300'
+                }`}
               />
+              {errors.fullName && (
+                <p className="text-red-600 text-sm mt-1">{errors.fullName}</p>
+              )}
             </div>
           )}
 
@@ -112,9 +140,13 @@ const AuthModal = ({ isOpen, onClose, defaultMode = 'signin' }) => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-sm sm:text-base"
-              required
+              className={`w-full px-3 py-2 sm:px-4 sm:py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-sm sm:text-base ${
+                errors.email ? 'border-red-500' : 'border-gray-300'
+              }`}
             />
+            {errors.email && (
+              <p className="text-red-600 text-sm mt-1">{errors.email}</p>
+            )}
           </div>
 
           <div>
@@ -125,15 +157,23 @@ const AuthModal = ({ isOpen, onClose, defaultMode = 'signin' }) => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-sm sm:text-base"
-              required
-              minLength={6}
+              className={`w-full px-3 py-2 sm:px-4 sm:py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-sm sm:text-base ${
+                errors.password ? 'border-red-500' : 'border-gray-300'
+              }`}
             />
+            {errors.password && (
+              <p className="text-red-600 text-sm mt-1">{errors.password}</p>
+            )}
+            {mode === 'signup' && !errors.password && (
+              <p className="text-gray-600 text-xs mt-1">
+                Must be at least 8 characters with uppercase, lowercase, and number
+              </p>
+            )}
           </div>
 
-          {error && (
+          {errors.submit && (
             <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
-              {error}
+              {errors.submit}
             </div>
           )}
 

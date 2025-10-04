@@ -18,12 +18,22 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const mockUser = { id: 'demo-user', email: 'demo@example.com' };
-    const mockProfile = { id: 'demo-user', email: 'demo@example.com', full_name: 'Demo User', role: 'admin' };
+    checkUser();
 
-    setUser(mockUser);
-    setProfile(mockProfile);
-    setLoading(false);
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      (async () => {
+        if (session?.user) {
+          setUser(session.user);
+          await loadUserData(session.user.id);
+        } else {
+          setUser(null);
+          setProfile(null);
+          setSubscription(null);
+        }
+      })();
+    });
+
+    return () => subscription?.unsubscribe();
   }, []);
 
   const checkUser = async () => {
